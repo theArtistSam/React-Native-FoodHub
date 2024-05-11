@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import StyledText from '../atoms/StyledText'; // Assuming you have a StyledText component
 import Heart from '../../../assets/icons/heart.svg'; // Assuming you have a Heart component
 import Spacer from '../atoms/Spacer'; // Assuming you have a Spacer component
 import { AppColors } from '../../styles/AppColors'; // Assuming you have a constants file with AppColors defined
 
-const FoodTile = ({ foodName, foodType, price }) => {
+const FoodTile = ({ foodName, foodType, price, onPress }) => {
     return (
-        <View style={styles.outerView}>
+        <TouchableOpacity onPress={onPress} style={styles.outerView}>
             {/* Food Item */}
             <View style={styles.imageView}>
                 {/* Background Image */}
@@ -43,7 +43,7 @@ const FoodTile = ({ foodName, foodType, price }) => {
                 <StyledText text={foodType} fontSize={14} fontWeight='Medium' color={AppColors.secondaryTextColor} />
 
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { TouchableOpacity, Text, View, Image, TextInput, FlatList, ScrollView } from 'react-native'
-import { IconButton } from 'react-native-paper'
 import styles from '../styles/core/RootStyle'
 import StyledIconButton from '../components/atoms/StyledIconButton'
 import MenuIcon from '../../assets/icons/MenuIcon.svg'
@@ -38,10 +37,9 @@ const foodsData = [
     { id: 4, foodName: "Salmon Salad", foodType: "Baked salmon fish", price: 5.50 },
     // Add more items as needed
 ];
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
 
     const [categoryIndex, setCategoryIndex] = useState(0);
-
     return (
         <ScrollView>
 
@@ -114,7 +112,7 @@ const HomeScreen = () => {
 
                 <Spacer vertical={10} />
 
-                <StyledText style={{ flex: 1 }} text={"Featured Popular Items"} fontWeight='SemiBold' fontSize={18}></StyledText>
+                <StyledText style={{ flex: 1 }} text={"Popular Items"} fontWeight='SemiBold' fontSize={18}></StyledText>
 
                 <Spacer vertical={10} />
 
@@ -128,6 +126,7 @@ const HomeScreen = () => {
                             foodName={item.foodName}
                             foodType={item.foodType}
                             price={item.price}
+                            onPress={() => navigation.push('FoodScreen')} // navigate to FoodScreen 
                         />
                     )}
                 />
