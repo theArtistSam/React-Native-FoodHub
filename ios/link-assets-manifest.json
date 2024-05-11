@@ -1,0 +1,77 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/SofiaSans-Black.ttf",
+      "sha1": "987eb284b58047cfdb5c7bb6c5bcb80d69333370"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-BlackItalic.ttf",
+      "sha1": "b2b2b7a96f6124d8ecff736eb6fa68c432089264"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-Bold.ttf",
+      "sha1": "82106fbff8f655d2d689195f9efdfa1568483687"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-BoldItalic.ttf",
+      "sha1": "8a0b751edea07bd18d7200d68cc3cf10612918d8"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-ExtraBold.ttf",
+      "sha1": "31fda73110db768212382b17bfe82df45d139505"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-ExtraBoldItalic.ttf",
+      "sha1": "67cc81d25efb70911becb4483c78cef06f7e251a"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-ExtraLight.ttf",
+      "sha1": "aca195e8e26dff3437516bbaddaa59926e04cb96"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-ExtraLightItalic.ttf",
+      "sha1": "56f25f397e27f53f64ae1a4e07c835ee96bd6820"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-Italic.ttf",
+      "sha1": "d0c2cf325879d233df373471a03b6bc5124e32f1"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-Light.ttf",
+      "sha1": "524ed18c357cec0bf1a56dea943752a1948df299"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-LightItalic.ttf",
+      "sha1": "93c89e8a6cfafa783ea96113bccc1ba778c8f7ee"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-Medium.ttf",
+      "sha1": "c31727c483d3b2118e647fc040d23393ef201975"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-MediumItalic.ttf",
+      "sha1": "32b8d8c13e9a49f9db1d9801c612c4780124300b"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-Regular.ttf",
+      "sha1": "5d265bfce42218e81a1b6e453bde36cda522d5ab"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-SemiBold.ttf",
+      "sha1": "daba06637df9c7f254098ee0b6f19923dce1ce1e"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-SemiBoldItalic.ttf",
+      "sha1": "efcbd078331234eaf5d0f53aa75a0c87424fb7c0"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-Thin.ttf",
+      "sha1": "83a8376f238286b3677a34fcfa824d4264f23042"
+    },
+    {
+      "path": "assets/fonts/SofiaSans-ThinItalic.ttf",
+      "sha1": "ec0cc86c6c6a89f20ad88756ef23a7be8f34b953"
+    }
+  ]
+}

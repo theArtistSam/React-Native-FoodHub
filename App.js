@@ -1,11 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { SafeAreaView, Text, View } from 'react-native';
+import Navigation from './src/utils/Navigation';
+import HomeScreen from './src/screens/HomeScreen';
+
 
 const App = () => {
     return (
-        <View>
-            <Text>This is FoodHub</Text>
-        </View>
+        <Navigation />
     );
 };
 export default App;
