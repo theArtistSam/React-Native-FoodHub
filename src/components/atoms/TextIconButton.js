@@ -3,7 +3,7 @@ import {TouchableOpacity, View, StyleSheet} from 'react-native';
 import {AppColors} from '../../styles/AppColors';
 import StyledText from '../atoms/StyledText'; // Assuming you have a StyledText component
 
-const TextIconButton = ({onPress, Icon}) => {
+const TextIconButton = ({title, onPress, Icon}) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.outerView}>
       <View style={styles.innerView}>
@@ -11,7 +11,7 @@ const TextIconButton = ({onPress, Icon}) => {
       </View>
       <StyledText
         style={{marginHorizontal: 10}}
-        text={'ADD TO CART'}
+        text={title}
         fontWeight="SemiBold"
         color="white"
       />

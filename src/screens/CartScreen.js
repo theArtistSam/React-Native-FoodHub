@@ -10,7 +10,7 @@ import CounterButton from '../components/atoms/CounterButton';
 import CartItem from '../components/molecules/CartItem';
 import TextButton from '../components/atoms/TextButton';
 
-const CartScreen = () => {
+const CartScreen = ({navigation}) => {
   const cartItems = [
     {
       id: 1,
@@ -34,7 +34,7 @@ const CartScreen = () => {
   return (
     <View style={styles.root}>
       {/* Appbar */}
-      <Appbar title={'Cart'}></Appbar>
+      <Appbar title={'Cart'} onPress={() => navigation.goBack()}></Appbar>
 
       <Spacer vertical={10}></Spacer>
       <View>
@@ -68,7 +68,14 @@ const CartScreen = () => {
         <StyledText text={'$27.82'} fontSize={20} fontWeight="Bold" />
       </View>
       <Spacer style={{flex: 1}} />
-      <TextButton text={'CHECKOUT'} onPress={() => {}} />
+      <View style={{height: 50}}>
+        <TextButton
+          text={'CHECKOUT'}
+          onPress={() => {
+            navigation.push('OrderScreen');
+          }}
+        />
+      </View>
     </View>
   );
 };

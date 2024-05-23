@@ -166,7 +166,13 @@ const FoodScreen = ({navigation}) => {
         )}
       />
 
-      <TextIconButton onPress={() => {}} Icon={Heart} />
+      <TextIconButton
+        title={'ADD TO CART'}
+        onPress={() => {
+          navigation.push('CartScreen');
+        }}
+        Icon={Heart}
+      />
     </View>
   );
 };
