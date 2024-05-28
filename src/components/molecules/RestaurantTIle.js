@@ -5,16 +5,20 @@ import Heart from '../../../assets/icons/heart.svg'; // Assuming you have a Hear
 import Spacer from '../atoms/Spacer'; // Assuming you have a Spacer component
 import {AppColors} from '../../styles/AppColors'; // Assuming you have a constants file with AppColors defined
 import {Bike, Check, Star, Stopwatch} from '../../../assets/icons';
-const RestaurantTile = ({restaurantName, rating, deliveryTime, foodTags}) => {
+const RestaurantTile = ({
+  restaurantName,
+  rating,
+  deliveryTime,
+  foodTags,
+  backgroundImage,
+  totalOrders,
+}) => {
   return (
     <View style={styles.outerView}>
       {/* Food Item */}
       <View style={styles.imageView}>
         {/* Background Image */}
-        <Image
-          style={styles.image}
-          source={require('../../../assets/images/food.png')}
-        />
+        <Image style={styles.image} source={{uri: backgroundImage}} />
 
         <View style={styles.ratingView}>
           {/* Rating */}
@@ -26,7 +30,7 @@ const RestaurantTile = ({restaurantName, rating, deliveryTime, foodTags}) => {
             <Spacer horizontal={3} />
             <Star width={15} fill="#FFC529" />
             <Spacer horizontal={3} />
-            <StyledText text={'25+'} fontSize={12} />
+            <StyledText text={`${totalOrders}+`} fontSize={12} />
           </View>
 
           <Spacer style={{flex: 1}} />

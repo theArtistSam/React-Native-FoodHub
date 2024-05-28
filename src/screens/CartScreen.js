@@ -1,12 +1,9 @@
 import React from 'react';
-import {Image, View, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import styles from '../styles/core/RootStyle';
-import Heart from '../../assets/icons/heart.svg';
 import StyledText from '../components/atoms/StyledText';
 import Appbar from '../components/atoms/Appbar';
 import Spacer from '../components/atoms/Spacer';
-import {AppColors} from '../styles/AppColors';
-import CounterButton from '../components/atoms/CounterButton';
 import CartItem from '../components/molecules/CartItem';
 import TextButton from '../components/atoms/TextButton';
 

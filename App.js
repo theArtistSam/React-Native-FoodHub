@@ -5,8 +5,12 @@ import HomeScreen from './src/screens/HomeScreen';
 import FoodScreen from './src/screens/FoodScreen';
 import CartScreen from './src/screens/CartScreen';
 import OrderScreen from './src/screens/OrderScreen';
+import ReviewScreen from './src/screens/ReviewScreen';
+import RatingScreen from './src/screens/RatingScreen';
 
 const App = () => {
+  // return <RatingScreen />;
+  // return <ReviewScreen />;
   return <Navigation />;
 };
 export default App;

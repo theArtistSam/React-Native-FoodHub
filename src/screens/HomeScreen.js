@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -18,6 +18,16 @@ import SearchTextInput from '../components/atoms/SearchTextInput';
 import FoodCategory from '../components/molecules/FoodCategory';
 import RestaurantTile from '../components/molecules/RestaurantTIle';
 import FoodTile from '../components/molecules/FoodTile';
+import {
+  fetchAllRestaurants,
+  addRestaurant,
+  restaurantsList,
+} from '../repositories/RestaurantRepository';
+import {
+  addFoodItem,
+  fetchAllFoodItems,
+  foodItemsList,
+} from '../repositories/FoodItemRepository';
 
 const foodCategories = [
   {id: 1, name: 'Burger'},
@@ -61,15 +71,51 @@ const foodsData = [
   {id: 4, foodName: 'Salmon Salad', foodType: 'Baked salmon fish', price: 5.5},
   // Add more items as needed
 ];
+
 const HomeScreen = ({navigation}) => {
   const [categoryIndex, setCategoryIndex] = useState(0);
+  const [restaurants, setRestaurants] = useState([]);
+  const [foodItems, setfoodItems] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const restaurantsData = await fetchAllRestaurants();
+        const foodItemsData = await fetchAllFoodItems();
+        setfoodItems(foodItemsData);
+        setRestaurants(restaurantsData);
+      } catch (error) {
+        console.error('Error: ', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <ScrollView>
       <View style={styles.root}>
         {/* App bar */}
         <View style={{flexDirection: 'row'}}>
           <StyledIconButton
-            onPress={() => {}}
+            onPress={() => {
+              // Example usage
+              // Shit is working fine!
+              // let's use useEffect instead
+              // for (let restaurant of restaurantsList) {
+              //   addRestaurant(restaurant);
+              // }
+              // fetchAllFoodItems()
+              //   .then(foodItems => {
+              //     console.log(foodItems);
+              //   })
+              //   .catch(error => {
+              //     console.log(error);
+              //   });
+              // for (let foodItem of foodItemsList) {
+              //   addFoodItem(foodItem);
+              // }
+            }}
             Icon={MenuIcon}></StyledIconButton>
           <View style={{flex: 1, alignItems: 'center'}}>
             <StyledText
@@ -141,16 +187,22 @@ const HomeScreen = ({navigation}) => {
         <Spacer vertical={10} />
 
         <FlatList
-          data={restaurantsData}
+          data={restaurants}
           horizontal
           showsHorizontalScrollIndicator={false}
           keyExtractor={item => item.id.toString()}
           renderItem={({item}) => (
             <RestaurantTile
-              restaurantName={item.restaurantName}
+              totalOrders={
+                item.totalOrders >= 1000
+                  ? `${(item.totalOrders / 1000).toFixed(2)}K`
+                  : item.totalOrders
+              }
+              backgroundImage={item.backgroundImage}
+              restaurantName={item.name}
               rating={item.rating}
               deliveryTime={item.deliveryTime}
-              foodTags={item.foodTags}
+              foodTags={item.foodCategories} // Corrected from item.foodTags to item.foodCategories
             />
           )}
         />
@@ -166,16 +218,17 @@ const HomeScreen = ({navigation}) => {
         <Spacer vertical={10} />
 
         <FlatList
-          data={foodsData}
+          data={foodItems}
           horizontal
           showsHorizontalScrollIndicator={false}
           keyExtractor={item => item.id.toString()}
           renderItem={({item}) => (
             <FoodTile
-              foodName={item.foodName}
-              foodType={item.foodType}
+              backgroundImage={item.backgroundImage}
+              foodName={item.name}
+              foodType={item.tagline}
               price={item.price}
-              onPress={() => navigation.push('FoodScreen')} // navigate to FoodScreen
+              onPress={() => navigation.push('FoodScreen', {foodId: item.id})}
             />
           )}
         />

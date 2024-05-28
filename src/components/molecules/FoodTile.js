@@ -5,16 +5,13 @@ import Heart from '../../../assets/icons/heart.svg'; // Assuming you have a Hear
 import Spacer from '../atoms/Spacer'; // Assuming you have a Spacer component
 import {AppColors} from '../../styles/AppColors'; // Assuming you have a constants file with AppColors defined
 
-const FoodTile = ({foodName, foodType, price, onPress}) => {
+const FoodTile = ({foodName, foodType, price, onPress, backgroundImage}) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.outerView}>
       {/* Food Item */}
       <View style={styles.imageView}>
         {/* Background Image */}
-        <Image
-          style={styles.image}
-          source={require('../../../assets/images/food.png')}
-        />
+        <Image style={styles.image} source={{uri: backgroundImage}} />
 
         <View style={styles.ratingView}>
           {/* Price */}
