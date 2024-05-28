@@ -4,7 +4,7 @@ import StyledText from '../atoms/StyledText'; // Assuming you have a StyledText 
 import Heart from '../../../assets/icons/heart.svg'; // Assuming you have a Heart component
 import Spacer from '../atoms/Spacer'; // Assuming you have a Spacer component
 import {AppColors} from '../../styles/AppColors'; // Assuming you have a constants file with AppColors defined
-
+import {Bike, Check, Star, Stopwatch} from '../../../assets/icons';
 const RestaurantTile = ({restaurantName, rating, deliveryTime, foodTags}) => {
   return (
     <View style={styles.outerView}>
@@ -24,7 +24,7 @@ const RestaurantTile = ({restaurantName, rating, deliveryTime, foodTags}) => {
               fontSize={14}
               fontWeight="Bold"></StyledText>
             <Spacer horizontal={3} />
-            <Heart width={12} />
+            <Star width={15} fill="#FFC529" />
             <Spacer horizontal={3} />
             <StyledText text={'25+'} fontSize={12} />
           </View>
@@ -47,13 +47,13 @@ const RestaurantTile = ({restaurantName, rating, deliveryTime, foodTags}) => {
         <View style={{flexDirection: 'row'}}>
           <StyledText text={restaurantName} fontSize={16} fontWeight="Bold" />
           <Spacer horizontal={3} />
-          <Heart width={20} height={20} fill={AppColors.confirmColor} />
+          <Check width={20} height={20} fill={'#029094'} />
         </View>
 
         <Spacer vertical={3} />
 
         <View style={{flexDirection: 'row'}}>
-          <Heart width={20} height={20} fill={AppColors.confirmColor} />
+          <Bike width={20} height={20} />
           <Spacer horizontal={3} />
           <StyledText
             text={'Free Delivery'}
@@ -64,7 +64,7 @@ const RestaurantTile = ({restaurantName, rating, deliveryTime, foodTags}) => {
 
           <Spacer horizontal={10} />
 
-          <Heart width={20} height={20} fill={AppColors.confirmColor} />
+          <Stopwatch width={20} height={20} fill={AppColors.confirmColor} />
           <Spacer horizontal={3} />
           <StyledText
             text={deliveryTime}

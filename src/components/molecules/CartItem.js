@@ -5,6 +5,7 @@ import Spacer from '../../components/atoms/Spacer';
 import CounterButton from '../../components/atoms/CounterButton';
 import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Heart from '../../../assets/icons/heart.svg';
+import {Cross, Minus, Plus} from '../../../assets/icons';
 const CartItem = ({foodName, foodCategory, foodPrice}) => {
   const [count, setCount] = useState(0);
   return (
@@ -20,7 +21,7 @@ const CartItem = ({foodName, foodCategory, foodPrice}) => {
             fontSize={18}
             fontWeight="SemiBold"></StyledText>
           <Spacer style={{flex: 1}}></Spacer>
-          <Heart colo={AppColors.primaryColor}></Heart>
+          <Cross width={24} height={24} fill={AppColors.primaryColor}></Cross>
         </View>
         <Spacer vertical={2}></Spacer>
         <StyledText text={foodCategory}></StyledText>
@@ -36,7 +37,7 @@ const CartItem = ({foodName, foodCategory, foodPrice}) => {
             onPress={() => {
               if (count > 0) setCount(count - 1);
             }}
-            Icon={Heart}
+            Icon={Minus}
             isBordered={true}></CounterButton>
           <Spacer horizontal={5}></Spacer>
           <StyledText text={count.toString()}></StyledText>
@@ -45,7 +46,7 @@ const CartItem = ({foodName, foodCategory, foodPrice}) => {
             onPress={() => {
               setCount(count + 1);
             }}
-            Icon={Heart}></CounterButton>
+            Icon={Plus}></CounterButton>
         </View>
       </View>
     </View>

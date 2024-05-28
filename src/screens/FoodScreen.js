@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import styles from '../styles/core/RootStyle';
 import StyledIconButton from '../components/atoms/StyledIconButton';
-import MenuIcon from '../../assets/icons/MenuIcon.svg';
 import StyledText from '../components/atoms/StyledText';
 import {AppColors} from '../styles/AppColors';
 import Spacer from '../components/atoms/Spacer';
@@ -23,6 +22,7 @@ import CounterButton from '../components/atoms/CounterButton';
 import RadioButton from '../components/atoms/RadioButton';
 import AddOnTile from '../components/molecules/AddOnTile';
 import TextIconButton from '../components/atoms/TextIconButton';
+import {BackArrow, Bike, Cart, Minus, Plus, Star} from '../../assets/icons';
 
 const addOnItems = [
   {id: '1', addOn: 'Pepper Julienned', price: 2.3},
@@ -57,7 +57,7 @@ const FoodScreen = ({navigation}) => {
           }}>
           <StyledIconButton
             onPress={() => navigation.goBack()}
-            Icon={Heart}
+            Icon={BackArrow}
             width={18}
             height={15}></StyledIconButton>
           <Spacer style={{flex: 1}} />
@@ -76,7 +76,7 @@ const FoodScreen = ({navigation}) => {
       <StyledText text={'Ground Beef Tacos'} fontSize={28} />
       <Spacer vertical={5} />
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <Heart fill={'#FFC529'} />
+        <Star fill={'#FFC529'} />
 
         <Spacer horizontal={5} />
 
@@ -120,7 +120,7 @@ const FoodScreen = ({navigation}) => {
         <Spacer style={{flex: 1}} />
 
         <CounterButton
-          Icon={Heart}
+          Icon={Minus}
           isDisabled={count == 0}
           isBordered={true}
           onPress={() => {
@@ -131,7 +131,7 @@ const FoodScreen = ({navigation}) => {
         <StyledText text={count.toString()} fontSize={16} fontWeight="Bold" />
         <Spacer horizontal={5} />
         <CounterButton
-          Icon={Heart}
+          Icon={Plus}
           onPress={() => {
             setCount(count + 1);
           }}
@@ -171,7 +171,7 @@ const FoodScreen = ({navigation}) => {
         onPress={() => {
           navigation.push('CartScreen');
         }}
-        Icon={Heart}
+        Icon={Cart}
       />
     </View>
   );

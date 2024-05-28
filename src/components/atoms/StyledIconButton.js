@@ -19,8 +19,8 @@ const StyledIconButton = ({
 const styles = StyleSheet.create({
   button: {
     backgroundColor: 'white',
-    paddingHorizontal: 15,
-    paddingVertical: 18,
+    paddingHorizontal: 12,
+    paddingVertical: 15,
     borderRadius: 12,
     shadowOffset: {width: 5, height: 10},
     shadowColor: 'rgba(0, 0, 0, .3)', // Shadow color with 30% opacity

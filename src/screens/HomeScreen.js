@@ -10,11 +10,10 @@ import {
 } from 'react-native';
 import styles from '../styles/core/RootStyle';
 import StyledIconButton from '../components/atoms/StyledIconButton';
-import MenuIcon from '../../assets/icons/MenuIcon.svg';
 import StyledText from '../components/atoms/StyledText';
 import {AppColors} from '../styles/AppColors';
 import Spacer from '../components/atoms/Spacer';
-import Heart from '../../assets/icons/heart.svg';
+import {Heart, Customize, Search, MenuIcon} from '../../assets/icons';
 import SearchTextInput from '../components/atoms/SearchTextInput';
 import FoodCategory from '../components/molecules/FoodCategory';
 import RestaurantTile from '../components/molecules/RestaurantTIle';
@@ -96,10 +95,11 @@ const HomeScreen = ({navigation}) => {
         <Spacer vertical={10} />
 
         <View style={{flexDirection: 'row'}}>
-          <SearchTextInput Icon={Heart}></SearchTextInput>
+          <SearchTextInput Icon={Search}></SearchTextInput>
           <Spacer horizontal={10} />
           <StyledIconButton
-            Icon={Heart}
+            iconColor={AppColors.primaryColor}
+            Icon={Customize}
             height={20}
             width={20}></StyledIconButton>
         </View>

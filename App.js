@@ -7,11 +7,6 @@ import CartScreen from './src/screens/CartScreen';
 import OrderScreen from './src/screens/OrderScreen';
 
 const App = () => {
-  return (
-    // <OrderScreen />
-    // <CartScreen />
-    <Navigation />
-    // <FoodScreen />
-  );
+  return <Navigation />;
 };
 export default App;

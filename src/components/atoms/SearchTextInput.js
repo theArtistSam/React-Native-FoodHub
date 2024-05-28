@@ -4,7 +4,7 @@ import {AppColors} from '../../styles/AppColors';
 const SearchTextInput = ({Icon}) => {
   return (
     <View style={styles.view}>
-      <Icon height={20} fill="#767F9D"></Icon>
+      <Icon width={20} height={20} fill="white"></Icon>
       <TextInput
         underlineColorAndroid="transparent"
         style={styles.input}

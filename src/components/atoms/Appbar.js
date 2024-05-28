@@ -4,11 +4,12 @@ import {StyleSheet} from 'react-native';
 import {AppColors} from '../../styles/AppColors';
 import Heart from '../../../assets/icons/heart.svg';
 import StyledText from '../../components/atoms/StyledText';
+import {BackArrow} from '../../../assets/icons';
 const Appbar = ({title, onPress}) => {
   return (
     <View style={styles.view}>
       <TouchableOpacity onPress={onPress}>
-        <Heart></Heart>
+        <BackArrow />
       </TouchableOpacity>
       <StyledText
         style={{flex: 1, textAlign: 'center'}}
