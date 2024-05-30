@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Avatar, ListItem, Icon} from 'react-native-elements';
-
+import {BackArrow, Star} from '../../assets/icons';
+// import styles from '../styles/core/RootStyle';
 const reviews = [
   {
     id: 1,
@@ -16,7 +17,8 @@ const reviews = [
     rating: 5,
     review:
       'Really convenient and the points system helps benefit loyalty. Some mild glitches here and there, but nothing too egregious. Obviously needs to roll out to more remote.',
-    avatar: './assets/foodhub pic.jpg',
+    avatar:
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     id: 2,
@@ -25,7 +27,8 @@ const reviews = [
     rating: 4,
     review:
       'Been a life saver for keeping our sanity during the pandemic, although they could improve some of their UI and how they handle specials as it often is unclear how to use them or everything is sold out so fast it feels a bit bait and switch. Still I’d be stir crazy and losing track of days without so...',
-    avatar: 'https://via.placeholder.com/150', // idhr koi picture dalni
+    avatar:
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // idhr koi picture dalni
   },
   {
     id: 3,
@@ -34,7 +37,8 @@ const reviews = [
     rating: 3,
     review:
       'Got an intro offer of 50% off first order that did not work..... I have scaled the app to find a contact us button but only a spend with us button available.',
-    avatar: 'https://via.placeholder.com/150', // idhr bhi
+    avatar:
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // idhr bhi
   },
   {
     id: 4,
@@ -43,7 +47,8 @@ const reviews = [
     rating: 2,
     review:
       'The app has potential, but there are still many issues that need to be addressed. The interface can be more intuitive, and it often crashes when trying to navigate between screens. Hoping for improvements in future updates.',
-    avatar: 'https://via.placeholder.com/150', // idhr bhi
+    avatar:
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // idhr bhi
   },
 ];
 
@@ -52,41 +57,28 @@ const ReviewScreen = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity>
-          <Icon name="arrow-left" type="font-awesome" size={24} color="#000" />
+          <BackArrow />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Reviews</Text>
       </View>
       <ScrollView>
-        <ListItem containerStyle={styles.writeReviewContainer} bottomDivider>
-          <Avatar source={{uri: 'https://via.placeholder.com/150'}} rounded />
-          <ListItem.Content>
-            <ListItem.Title style={styles.writeReviewText}>
-              Write your review...
-            </ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
         {reviews.map(review => (
-          <ListItem
-            key={review.id}
-            containerStyle={styles.reviewContainer}
-            bottomDivider>
-            <Avatar source={{uri: review.avatar}} rounded />
+          <ListItem key={review.id} containerStyle={styles.reviewContainer}>
             <ListItem.Content>
-              <ListItem.Title style={styles.reviewName}>
-                {review.name}
-              </ListItem.Title>
-              <ListItem.Subtitle style={styles.reviewDate}>
-                {review.date}
-              </ListItem.Subtitle>
+              <View style={{flexDirection: 'row'}}>
+                <Avatar source={{uri: review.avatar}} rounded />
+                <View style={{marginLeft: 10}}>
+                  <ListItem.Title style={styles.reviewName}>
+                    {review.name}
+                  </ListItem.Title>
+                  <ListItem.Subtitle style={styles.reviewDate}>
+                    {review.date}
+                  </ListItem.Subtitle>
+                </View>
+              </View>
               <View style={styles.rating}>
                 {[...Array(review.rating)].map((_, i) => (
-                  <Icon
-                    key={i}
-                    name="star"
-                    type="font-awesome"
-                    size={15}
-                    color="#ffd700"
-                  />
+                  <Star fill="yellow" />
                 ))}
               </View>
               <ListItem.Subtitle style={styles.reviewText}>
@@ -104,6 +96,7 @@ export default ReviewScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
     backgroundColor: '#f8f8f8',
   },
   header: {
@@ -120,6 +113,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
+    color: 'black',
   },
   writeReviewContainer: {
     backgroundColor: '#fff',
@@ -140,11 +134,13 @@ const styles = StyleSheet.create({
   reviewName: {
     fontWeight: 'bold',
     fontSize: 16,
+    fontFamily: 'SofiaSans-Bold',
   },
   reviewDate: {
     fontSize: 14,
     color: '#777',
     marginBottom: 5,
+    fontFamily: 'SofiaSans-Medium',
   },
   rating: {
     flexDirection: 'row',
@@ -152,7 +148,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   reviewText: {
-    fontSize: 14,
+    fontSize: 16,
     color: '#333',
+    fontFamily: 'SofiaSans-Medium',
   },
 });

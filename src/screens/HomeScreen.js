@@ -28,6 +28,7 @@ import {
   fetchAllFoodItems,
   foodItemsList,
 } from '../repositories/FoodItemRepository';
+import fetchAllCartItems from '../repositories/CartRepository';
 
 const foodCategories = [
   {id: 1, name: 'Burger'},
@@ -37,39 +38,6 @@ const foodCategories = [
   {id: 5, name: 'Asian'},
   {id: 6, name: 'Chinese'},
   {id: 7, name: 'American'}, // Add more categories as needed
-];
-
-const restaurantsData = [
-  {
-    id: 1,
-    restaurantName: "McDonald's",
-    rating: 4.5,
-    deliveryTime: '10-15 mins',
-    foodTags: ['BURGER', 'CHICKEN', 'FAST FOOD'],
-  },
-  {
-    id: 2,
-    restaurantName: "McDonald's",
-    rating: 4.5,
-    deliveryTime: '10-15 mins',
-    foodTags: ['BURGER', 'CHICKEN', 'FAST FOOD'],
-  },
-  {
-    id: 3,
-    restaurantName: "McDonald's",
-    rating: 4.5,
-    deliveryTime: '10-15 mins',
-    foodTags: ['BURGER', 'CHICKEN', 'FAST FOOD'],
-  },
-  // Add more items as needed
-];
-
-const foodsData = [
-  {id: 1, foodName: 'Salmon Salad', foodType: 'Baked salmon fish', price: 5.5},
-  {id: 2, foodName: 'Salmon Salad', foodType: 'Baked salmon fish', price: 5.5},
-  {id: 3, foodName: 'Salmon Salad', foodType: 'Baked salmon fish', price: 5.5},
-  {id: 4, foodName: 'Salmon Salad', foodType: 'Baked salmon fish', price: 5.5},
-  // Add more items as needed
 ];
 
 const HomeScreen = ({navigation}) => {
@@ -115,6 +83,9 @@ const HomeScreen = ({navigation}) => {
               // for (let foodItem of foodItemsList) {
               //   addFoodItem(foodItem);
               // }
+              // fetchAllCartItems().then(cartItems => {
+              //   console.log(cartItems);
+              // });
             }}
             Icon={MenuIcon}></StyledIconButton>
           <View style={{flex: 1, alignItems: 'center'}}>
@@ -221,14 +192,16 @@ const HomeScreen = ({navigation}) => {
           data={foodItems}
           horizontal
           showsHorizontalScrollIndicator={false}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <FoodTile
               backgroundImage={item.backgroundImage}
               foodName={item.name}
               foodType={item.tagline}
               price={item.price}
-              onPress={() => navigation.push('FoodScreen', {foodId: item.id})}
+              onPress={() => {
+                navigation.push('FoodScreen', {foodItem: item});
+              }}
             />
           )}
         />

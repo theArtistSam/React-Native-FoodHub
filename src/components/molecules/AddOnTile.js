@@ -9,9 +9,7 @@ import RadioButton from '../atoms/RadioButton';
 const AddOnTile = ({addOn, price, isSelected = false, image}) => {
   return (
     <View style={styles.outerView}>
-      <Image
-        style={styles.image}
-        source={require(`../../../assets/images/food.png`)}></Image>
+      <Image style={styles.image} source={{uri: image}}></Image>
       <Spacer horizontal={5} />
       <StyledText text={addOn} fontSize={16} fontWeight="SemiBold" />
       <Spacer style={{flex: 1}} />

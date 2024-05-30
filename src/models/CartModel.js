@@ -1,8 +1,9 @@
-class CartModel {
-  constructor(id, items = []) {
+class CartItemModel {
+  constructor(id, foodItemId, quantity) {
     this.id = id;
-    this.items = items; // Array of item objects {FoodItem, quantity}
+    this.foodItemId = foodItemId; // Array of item objects {FoodItem, quantity}
+    this.quantity = quantity;
   }
 }
 
-export default CartModel;
+export default CartItemModel;

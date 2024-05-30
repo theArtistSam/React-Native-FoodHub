@@ -39,7 +39,10 @@ const orders = [
 const OrderScreen = ({navigation}) => {
   return (
     <View style={styles.root}>
-      <Appbar title={'Orders'} onPress={() => navigation.goBack()} />
+      <Appbar
+        title={'Orders'}
+        onPress={() => navigation.navigate('HomeScreen')}
+      />
 
       <Spacer vertical={10} />
       <ToggleTab leftText={'Upcoming'} rightText={'History'} />

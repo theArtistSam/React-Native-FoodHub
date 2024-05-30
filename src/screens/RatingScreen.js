@@ -8,6 +8,11 @@ import {
   Image,
 } from 'react-native';
 import {Icon, Button} from 'react-native-elements';
+import {BackArrow, Star} from '../../assets/icons';
+import {AppColors} from '../styles/AppColors';
+import TextIconButton from '../components/atoms/TextIconButton';
+import TextButton from '../components/atoms/TextButton';
+import Spacer from '../components/atoms/Spacer';
 // import AppLoading from 'expo-app-loading';
 // import {
 //   useFonts,
@@ -32,28 +37,25 @@ const RatingScreen = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity>
-          <Icon name="arrow-left" type="font-awesome" size={24} color="#000" />
+          <BackArrow />
         </TouchableOpacity>
       </View>
       <View style={styles.content}>
         <Image
-          source={{uri: 'https://via.placeholder.com/150'}} // idhr koi food brand logo add krna hai
+          source={{
+            uri: 'https://images.unsplash.com/photo-1620174645265-05820da4ff20?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          }}
           style={styles.avatar}
         />
         <Text style={styles.title}>
           How was your last order from Pizza Hut?
         </Text>
-        <Text style={styles.subtitle}>Good</Text>
+        <Text style={[styles.subtitle, {color: AppColors.primaryColor}]}>
+          Good
+        </Text>
         <View style={styles.stars}>
           {[...Array(5)].map((_, index) => (
-            <Icon
-              key={index}
-              name={index < rating ? 'star' : 'star-o'}
-              type="font-awesome"
-              size={32}
-              color="#ffd700"
-              onPress={() => setRating(index + 1)}
-            />
+            <Star fill="yellow" />
           ))}
         </View>
         <TextInput
@@ -63,14 +65,10 @@ const RatingScreen = () => {
           onChangeText={setReviewText}
           placeholderTextColor="#aaa"
         />
-        <Button
-          title="SUBMIT"
-          buttonStyle={styles.submitButton}
-          titleStyle={styles.submitButtonText}
-          onPress={() =>
-            console.log('Review submitted:', reviewText, 'Rating:', rating)
-          }
-        />
+        {/* <Spacer style={{flex: 1}} /> */}
+        <View style={{height: 50}}>
+          <TextButton text={'SUBMIT'} onPress={() => {}} />
+        </View>
       </View>
     </View>
   );
@@ -81,6 +79,7 @@ export default RatingScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
     backgroundColor: '#fff',
   },
   header: {
@@ -103,14 +102,15 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontFamily: 'Poppins_600SemiBold',
+    fontFamily: 'SofiaSans-Medium',
     textAlign: 'center',
     marginBottom: 10,
+    color: 'black',
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 20,
     color: 'green',
-    fontFamily: 'Poppins_400Regular',
+    fontFamily: 'SofiaSans-Bold',
     marginBottom: 10,
   },
   stars: {

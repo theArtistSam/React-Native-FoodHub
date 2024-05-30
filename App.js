@@ -7,8 +7,12 @@ import CartScreen from './src/screens/CartScreen';
 import OrderScreen from './src/screens/OrderScreen';
 import ReviewScreen from './src/screens/ReviewScreen';
 import RatingScreen from './src/screens/RatingScreen';
-
+import LoginScreen from './src/screens/LoginScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
+// import PhoneRegistrationScreen from './src/screens/PhoneRegistrationScreen';
 const App = () => {
+  // return <SignUpScreen />;
+  // return <LoginScreen />;
   // return <RatingScreen />;
   // return <ReviewScreen />;
   return <Navigation />;

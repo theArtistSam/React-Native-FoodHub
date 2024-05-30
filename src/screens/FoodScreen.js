@@ -23,7 +23,8 @@ import RadioButton from '../components/atoms/RadioButton';
 import AddOnTile from '../components/molecules/AddOnTile';
 import TextIconButton from '../components/atoms/TextIconButton';
 import {BackArrow, Bike, Cart, Minus, Plus, Star} from '../../assets/icons';
-
+import {addCartItem} from '../repositories/CartRepository';
+import CartItemModel from '../models/CartModel';
 const addOnItems = [
   {id: '1', addOn: 'Pepper Julienned', price: 2.3},
   {id: '2', addOn: 'Pepper Julienned', price: 3.3},
@@ -33,8 +34,9 @@ const addOnItems = [
   // { id: '6', addOn: 'Pepper Julienned', price: 2.30 },
   // { id: '7', addOn: 'Pepper Julienned', price: 4.30 },
 ];
-const FoodScreen = ({navigation}) => {
+const FoodScreen = ({navigation, route}) => {
   const [count, setCount] = useState(1);
+  const {foodItem} = route.params;
 
   return (
     <View style={styles.root}>
@@ -47,7 +49,7 @@ const FoodScreen = ({navigation}) => {
             resizeMode: 'cover',
             borderRadius: 15,
           }}
-          source={require('../../assets/images/food.png')}></Image>
+          source={{uri: foodItem.backgroundImage}}></Image>
         <View
           style={{
             position: 'absolute',
@@ -73,21 +75,25 @@ const FoodScreen = ({navigation}) => {
       </View>
 
       <Spacer vertical={10} />
-      <StyledText text={'Ground Beef Tacos'} fontSize={28} />
+      <StyledText text={foodItem.name} fontSize={28} />
       <Spacer vertical={5} />
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <Star fill={'#FFC529'} />
 
         <Spacer horizontal={5} />
 
-        <StyledText text={'4.5'} fontSize={16} fontWeight="Bold" />
+        <StyledText text={foodItem.rating} fontSize={16} fontWeight="Bold" />
 
         <Spacer horizontal={5} />
 
         <StyledText
-          text={'(30+)'}
+          text={`(${
+            foodItem.totalOrders >= 1000
+              ? (foodItem.totalOrders / 1000).toFixed(1) + 'K'
+              : foodItem.totalOrders
+          }+)`}
           fontSize={16}
-          fontWeight="Regular"
+          fontWeight="regular" // fontWeight should be 'regular' instead of 'Regular'
           color={AppColors.secondaryTextColor}
         />
 
@@ -124,7 +130,7 @@ const FoodScreen = ({navigation}) => {
           isDisabled={count == 0}
           isBordered={true}
           onPress={() => {
-            if (count >= 1) setCount(count - 1);
+            if (count > 1) setCount(count - 1);
           }}
         />
         <Spacer horizontal={5} />
@@ -143,9 +149,7 @@ const FoodScreen = ({navigation}) => {
       <StyledText
         fontSize={18}
         color={AppColors.secondaryTextColor}
-        text={
-          'Brown the beef better. Lean ground beef - I like to use 85% lean angus. Garlic - use fresh chopped. Spices chili powder, cumin, onion powder.'
-        }
+        text={foodItem.description}
       />
 
       <Spacer vertical={10} />
@@ -159,16 +163,17 @@ const FoodScreen = ({navigation}) => {
       <Spacer vertical={5} />
 
       <FlatList
-        data={addOnItems}
+        data={foodItem.addOns}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <AddOnTile addOn={item.addOn} price={item.price} />
+          <AddOnTile image={item.image} addOn={item.name} price={item.price} />
         )}
       />
 
       <TextIconButton
         title={'ADD TO CART'}
         onPress={() => {
+          addCartItem(new CartItemModel(1, foodItem.id, count));
           navigation.push('CartScreen');
         }}
         Icon={Cart}

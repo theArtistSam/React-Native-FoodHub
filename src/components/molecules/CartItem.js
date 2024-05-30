@@ -6,13 +6,18 @@ import CounterButton from '../../components/atoms/CounterButton';
 import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Heart from '../../../assets/icons/heart.svg';
 import {Cross, Minus, Plus} from '../../../assets/icons';
-const CartItem = ({foodName, foodCategory, foodPrice}) => {
-  const [count, setCount] = useState(0);
+const CartItem = ({
+  id,
+  foodName,
+  foodCategory,
+  foodPrice,
+  backgroundImage,
+  quantity,
+  callbackFn,
+}) => {
   return (
     <View style={styles.outerView}>
-      <Image
-        style={styles.image}
-        source={require('../../../assets/images/food.png')}></Image>
+      <Image style={styles.image} source={{uri: backgroundImage}}></Image>
 
       <View style={styles.innerView}>
         <View style={{flexDirection: 'row'}}>
@@ -21,32 +26,28 @@ const CartItem = ({foodName, foodCategory, foodPrice}) => {
             fontSize={18}
             fontWeight="SemiBold"></StyledText>
           <Spacer style={{flex: 1}}></Spacer>
-          <Cross width={24} height={24} fill={AppColors.primaryColor}></Cross>
+          <TouchableOpacity
+            onPress={() => {
+              callbackFn(id);
+            }}>
+            <Cross width={24} height={24} fill={AppColors.primaryColor}></Cross>
+          </TouchableOpacity>
         </View>
         <Spacer vertical={2}></Spacer>
         <StyledText text={foodCategory}></StyledText>
         <Spacer style={{flex: 1}}></Spacer>
         <View style={styles.counterView}>
           <StyledText
-            text={`$${foodPrice.toString()}`}
+            text={`$${foodPrice}`}
             fontSize={20}
             color={AppColors.primaryColor}
             fontWeight="Bold"></StyledText>
           <Spacer style={{flex: 1}}></Spacer>
-          <CounterButton
-            onPress={() => {
-              if (count > 0) setCount(count - 1);
-            }}
-            Icon={Minus}
-            isBordered={true}></CounterButton>
-          <Spacer horizontal={5}></Spacer>
-          <StyledText text={count.toString()}></StyledText>
-          <Spacer horizontal={5}></Spacer>
-          <CounterButton
-            onPress={() => {
-              setCount(count + 1);
-            }}
-            Icon={Plus}></CounterButton>
+          <StyledText
+            text={`Qty: ${Number(quantity).toString()}`}
+            fontWeight="Bold"
+            color={AppColors.primaryColor}
+            fontSize={18}></StyledText>
         </View>
       </View>
     </View>
